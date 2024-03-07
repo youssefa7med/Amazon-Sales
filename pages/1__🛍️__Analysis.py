@@ -52,6 +52,8 @@ fig1 = px.pie(df_selected
     ,values=selected,names='index',template='simple_white',color_discrete_sequence=px.colors.sequential.RdBu
     ,title=f'The number of orders in each {selected}',hole=0.3)
 fig1.update_traces(textposition='inside', textinfo='percent+label')
+fig1.update_layout(showlegend=False)
+fig1.update_traces(marker_line_color='black', marker_line_width=1)
 st.plotly_chart(fig1)
 
 largest = df_selected.nlargest(1,selected)['index'][0]
@@ -66,11 +68,15 @@ time = st.radio('Select Time Range :',('All',2020,2021),horizontal=True)
 if time == 'All':
     fig= px.bar(df[selected].value_counts().reset_index().nlargest(10,selected),y='index',x=selected,template='simple_white',color_discrete_sequence=px.colors.sequential.RdBu
             ,text_auto = True,color = 'index',title=f'Top 10 {selected} In Total Count Of Orders',labels={'index':selected,selected:'Count'})
+    fig.update_layout(showlegend=False)
+    fig.update_traces(marker_line_color='black', marker_line_width=1)
     st.plotly_chart(fig)
     st.subheader(f'- The Most Popular {selected} In Count Of Orders Is '+df[selected].value_counts().reset_index().nlargest(1,selected)['index'][0]+' All Time .')
 else:
     fig= px.bar(df[df['order_year'] == time][selected].value_counts().reset_index().nlargest(10,selected),y='index',x=selected,template='simple_white',color_discrete_sequence=px.colors.sequential.RdBu
             ,text_auto = True,color = 'index',title=f'Top 10 {selected} In Total Count Of Orders In {time}',labels={'index':selected,selected:'Count'})
+    fig.update_layout(showlegend=False)
+    fig.update_traces(marker_line_color='black', marker_line_width=1)
     st.plotly_chart(fig)
     st.subheader(f'- The Most Popular {selected} In Count Of Orders Is '+df[df['order_year'] == time][selected].value_counts().reset_index().nlargest(1,selected)['index'][0]+f' In {time} .')
 
@@ -88,6 +94,8 @@ if year == 'All':
             ,x=time_type,y='total'
             ,template='simple_white',color_discrete_sequence=px.colors.sequential.RdBu
             ,title='The Mean Total For '+ cat +' Orders In Each '+time_type,markers=True)
+    fig.update_layout(showlegend=False)
+    fig.update_traces(marker_line_color='black', marker_line_width=1)
     column1.plotly_chart(fig)
 
 else:
@@ -95,4 +103,6 @@ else:
             ,x=time_type,y='total'
             ,template='simple_white',color_discrete_sequence=px.colors.sequential.RdBu
             ,title='The Mean Total For '+ cat +' Orders In Each '+time_type+f' In {year}',markers=True)
+    fig.update_layout(showlegend=False)
+    fig.update_traces(marker_line_color='black', marker_line_width=1)
     column1.plotly_chart(fig)

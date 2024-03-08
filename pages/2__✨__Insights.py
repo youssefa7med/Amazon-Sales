@@ -163,14 +163,25 @@ st.divider()
 
 column1,column2,column3 = st.columns([1,4,1])
 
+fig = px.pie(df.groupby('holiday')['order_id'].count().reset_index()
+        ,values='order_id',names='holiday',template='presentation'
+        ,title='The Number Of Orders Per Holiday').update_traces(textposition='inside', textinfo='percent+label')
+fig.update_layout(showlegend=False)
+fig.update_traces(marker_line_color='black', marker_line_width=1)
+column2.plotly_chart(fig,use_container_width=True)
+st.subheader('- 35.6% Of Total Count Of Orders Are On Holidays Although The Holidays Are Two Days Only .')
+st.subheader('- That Means You Can Make More Or Same Profit In Holidays Because You Have High Number Of Orders In Holidays Compared To Other Days .')
+
+column1,column2,column3 = st.columns([1,4,1])
+
 fig = px.pie(df.groupby('holiday')['total'].mean().round(2).reset_index()
         ,values='total',names='holiday',template='presentation'
-        ,title='The mean total per holiday').update_traces(textposition='inside', textinfo='percent+label')
+        ,title='The Mean Total Per Holiday').update_traces(textposition='inside', textinfo='percent+label')
 fig.update_layout(showlegend=False)
 fig.update_traces(marker_line_color='black', marker_line_width=1)
 column2.plotly_chart(fig,use_container_width=True)
 st.subheader('- 50.2% Of Total Mean Orders Are On Holidays Although The Holidays Are Two Days Only .')
-st.subheader('- That Means You Can Make More Profit In Holidays Because You Can Sell More Than The Rest Of The Week .')
+st.subheader('- That Means You Can Make More Or Same Profit In Holidays Because You Can Sell With The Same Mean Total .')
 
 # -----------------------------------------------------------
 # st.divider()

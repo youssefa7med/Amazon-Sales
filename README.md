@@ -1,4 +1,5 @@
 # Amazon Sales Analysis
+![GIF](https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExbXNqYnhsMnp2Ymo5azBmMmhiZWowOTdqanFhOHN4eW1odmhibTdsZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qy3nxN4UJMb4c/giphy.gif)
 
 This project provides an in-depth analysis of Amazon sales data, focusing on extracting actionable insights to understand sales performance, trends, and factors influencing sales. The analysis leverages advanced data processing and visualization techniques to deliver comprehensive business intelligence.
 
